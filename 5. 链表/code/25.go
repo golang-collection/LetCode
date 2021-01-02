@@ -10,20 +10,27 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	if head == nil || head.Next == nil || k == 1{
 		return head
 	}
-	newHead := &ListNode{
-		Next:head,
+	a, b := head, head
+	for i := 0; i<k;i++{
+		if b == nil{
+			return head
+		}
+		b = b.Next
 	}
+	newHead := reverse(a, b)
+	a.Next = reverseKGroup(b ,k)
+	return newHead
 
 }
 
-func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
-	prev := tail.Next
-	p := head
-	for prev != tail {
-		nex := p.Next
-		p.Next = prev
-		prev = p
-		p = nex
+func reverse(a, b *ListNode) *ListNode{
+	var pre *ListNode
+	cur, nxt := a, a
+	for cur != b{
+		nxt = cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = nxt
 	}
-	return tail, head
+	return pre
 }
