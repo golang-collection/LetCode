@@ -15,6 +15,4 @@ func numTrees(n int) int {
 		}
 	}
 	return G[n]
-	14
-	34
 }
