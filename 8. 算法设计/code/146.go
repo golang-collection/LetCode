@@ -3,7 +3,7 @@ package code
 /**
 * @Author: super
 * @Date: 2021-01-12 07:36
-* @Description:
+* @Description: LRU
 **/
 
 type LRUCache struct {
